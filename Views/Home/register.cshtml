@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "/Views/Shared/_HomeLayout.cshtml";
+}
+    <!-- registration -->
+    <div class="main-1">
+		<div class="container">
+			<div class="register">
+		  	  <form method="post" action="/Home/save"  onsubmit="return fillAll()"> 
+				 <div class="register-top-grid">
+					<h3>PERSONAL INFORMATION</h3>
+					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
+						<span>First Name<label>*</label></span>
+						<input id="fn" name="fname" type="text"> 
+					 </div>
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						<span>Last Name<label>*</label></span>
+						<input id="ln" name="lname" type="text"> 
+					 </div>
+					 <div id="ediv" class="wow fadeInLeft" data-wow-delay="0.4s">
+						 <span>Email Address<label>*</label></span>
+						 <input name="email" id="e1" type="text"> 
+					 </div>
+                     <div class="wow fadeInRight" data-wow-delay="0.4s">
+						 <span>Availability<label></label></span>
+						 <label id="vlabel"></label>
+					 </div>
+                     <!-- Mail Checking-->
+                     <div class="wow fadeInRight" data-wow-delay="0.4s">
+						 <span><label></label></span>
+						 <label></label>
+					 </div>
+
+                     <div id="hint" style="color:yellow" class="wow fadeInLeft" data-wow-delay="0.4s"></div>
+
+					 <div class="clearfix"> </div>
+                     <a class="news-letter" href="#">
+						 
+					   </a>
+					 </div>
+				     <div class="register-bottom-grid">
+						    <h3>LOGIN INFORMATION</h3>
+							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
+								<span>Password<label>*</label></span>
+								<input id="p1" name="pwd"type="password">
+							 </div>
+							 <div class="wow fadeInRight" data-wow-delay="0.4s">
+								<span>Confirm Password<label>*</label></span>
+								<input id="cp1" name="confirm" type="password">
+							 </div>
+					 </div>
+				    <div class="submit-btn">
+				        <input type="submit" value="SUBMIT">
+				    </div>
+				</form>
+		   </div>
+		 </div>
+        </div>
+
+     @Scripts.Render("~/bundles/jquery");
+    <script src="~/Scripts/mailcheck.js"></script>
+    <script src="~/Scripts/mailcheck.min.js"></script>
+    <script>
+        $(document).ready(validateUser);
+        $(document).ready(mailCheck);
+
+        function validateUser()
+        {   
+            $('#e1').keyup(check);
+            $('#e1').click(check);
+        }
+
+        function check() {
+            var inp = $('#e1').val();
+            inp = $.trim(inp);
+            if (inp.length==0) {
+                $('#vlabel').text("");
+            }
+
+            else
+                $.getJSON('/Home/CheckUser', { "em": $('#e1').val() },
+                function (d) {
+                    if (d == true) {
+                        $('#vlabel').text("Username available");
+                        $('#vlabel').css("color", "lawngreen");
+                    }
+                    else {
+                        $('#vlabel').text("Username not available");
+                        $('#vlabel').css("color", "red");
+                    }
+                });
+        }
+        
+        function fillAll() {
+            if ($.trim($('#fn').val()).length == 0) {
+                alert("Incomplete information! All fields are required");
+                return false;
+            }
+
+            else if ($.trim($('#ln').val()).length == 0) {
+                alert("Incomplete information! All fields are required");
+                return false;
+            }
+
+            else if ($.trim($('#e1').val()).length == 0) {
+                alert("Incomplete information! All fields are required");
+                return false;
+            }
+
+            else if ($.trim($('#p1').val()).length == 0) {
+                alert("Incomplete information! All fields are required");
+                return false;
+            }
+
+            else if ($.trim($('#cp1').val()).length == 0) {
+                alert("Incomplete information! All fields are required");
+                return false;
+            }
+
+            else if ($('#p1').val() != $('#cp1').val()) {
+                alert("Passwords dont match! Please try again.");
+                return false;
+            }
+            else
+                return true;
+        }
+
+        function mailCheck()
+        {
+            var email = $('#e1');
+            var hint = $('#hint');
+
+            email.on('blur',
+                function () {
+                    hint.css('display', 'none').empty();
+                    $(this).mailcheck({
+                        suggested: function (element, suggestion) {
+                            if (!hint.html()) {
+                                var suggestion = "Did you mean<span class='suggestion'><span class='address' style='color:yellow;font-weight:bold;text-transfrom:lowercase'>"+suggestion.address+"</span><nobr>&#64"+"<a href='#' class='domain' style='color:yellow;font-weight:bold;text-transfrom:lowercase'><b><i>"+suggestion.domain+"</b><i></a></span>?";
+                                hint.html(suggestion).fadeIn(150);
+                            }
+
+                            else {
+                                $('.address').html(suggestion.address);
+                                $('.domain').html(suggestion.domain);
+                            }
+                        }
+                    });
+                });
+
+            hint.on('click', '.domain',
+                function () {
+                    email.val($('.suggestion').text());
+                    hint.fadeOut(200, function () { $(this).empty(); });
+                    return false;
+                });
+        }
+
+
+    </script>
+    <!-- registration -->

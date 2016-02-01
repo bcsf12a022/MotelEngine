@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>Motel - Residential Luxury</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Motel" />
+<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="~/Content/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="~/Content/style.css" rel='stylesheet' type='text/css' />	
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<!--webfonts-->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,600' rel='stylesheet' type='text/css'>
+   <!--//webfonts-->
+<script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+<!-- banner -->
+	<div class="banner1">
+		<div class="header">
+			<div class="container">
+				<div class="logo">
+					<h1><a href="/Home/Index">Motel</a></h1>
+				</div>
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<!--/.navbar-header-->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+                                <li><a href="/Home/signin">Sign In</a></li>
+								<li><a href="/Home/contact">Contact</a></li>
+							</ul>
+						</div>
+						<!--/.navbar-collapse-->
+					</nav>
+			</div>
+		</div>
+
+        @RenderBody();
+
+        <!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-2 deco">
+				<h4>Navigation</h4>
+                <li> @Html.ActionLink("Home","index","Customer"); </li>
+                <li> @Html.ActionLink("Sign in","signin","Home"); </li>
+                <li> @Html.ActionLink("Contact","contact","Home"); </li>
+			</div>
+			
+			<div class="col-md-2 deco">
+				<h4>Social</h4>
+				<div class="soci">
+					<li><a href="https://www.facebook.com/MohibShahzad"><i class="f-1"> </i></a></li>
+					<li><a href="temp.cshtml"><i class="t-1"> </i></a></li>
+					<li><a href="https://twitter.com/MohibShahzad   "><i class="g-1"> </i></a></li>
+				</div>
+			</div>
+			<div class="col-md-3 cardss">
+				<h4>Payment Sécure</h4>
+				<li><i class="visa"></i></li>
+				<li><i class="ma"></i></li>
+				<li><i class="paypal"></i></li>
+				<div class="clearfix"> </div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="footer-bottom">
+			<div class="container">
+				<p>© 2015 Motel. All Rights Reserved</p>
+			</div>
+		</div>
+	<!-- footer -->
+</body>
+</html>

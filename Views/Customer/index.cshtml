@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+		<div class="banner-info">
+			<div class="container">
+				<div class="details-1">
+					<div class="col-md-10 dropdown-buttons">   
+						<div class="col-md-3 dropdown-button">           			
+							<div class="input-group">
+								<input class="form-control has-dark-background" name="slider-name" id="slider-name" placeholder="Name" type="text" required="">
+							</div>
+						</div>
+						<!---start-date-picker---->
+							<link rel="stylesheet" href="~/Content/jquery-ui.css" />
+							<script src="~/Scripts/jquery-ui.js"></script>
+							  <script>
+									  $(document).ready(function() {
+									      $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
+									      $("#datepicker1").datepicker({ dateFormat: 'dd-mm-yy' });
+									  });
+							  </script>
+						<!---/End-date-picker---->
+
+						<div class="col-md-3 dropdown-button">           			
+							<div class="book_date">
+								<form>
+									<input class="date" id="datepicker" type="text" value="Check In" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Check In';}">
+								</form>
+							</div>		
+						</div>
+					  <div class="col-md-3 dropdown-button">           			
+							<div class="book_date">
+								<form>
+									<input class="date1" id="datepicker1" type="text" value="Check Out" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Check Out';}"> 
+								</form>
+							</div>		
+						</div>
+						<div class="col-md-3 dropdown-button">
+						  <div class="section_1">
+							 <select id="country" onchange="change_country(this.value)" class="frm-field required">
+								<option value="null">Double Room</option>
+								<option value="null">Single Room</option>         
+								<option value="AX">Luxury Suite</option>
+								<option value="AX">Guest Room</option>
+							 </select>
+						  </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div> 
+					<div class="col-md-2 submit_button"> 
+						<form action="/Customer/details">
+							<input type="submit" value="Search">
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<!-- banner -->
+	<!-- hod -->
+	<div class="hod">
+		<div class="container">
+			<div class="col-md-6 hod-left">
+				<img src="~/images/14.jpg" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-6 hod-right">
+				<h2>Luxury Suites</h2>
+				<p>Highly luxurious rooms and lounges fully equipped with all latest facilities. Highest standard lighting and furnishing along with appliances and 
+                    fine glasswork of expensive and unique kinds. A dream place for a vacation!
+				</p>
+				<a class="hvr-shutter-in-horizontal" href="/Customer/details">Book Now</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- hod -->
+	<!-- tels -->
+	<div class="tels">
+		<div class="container">
+			<div class="col-md-4 tels-left">
+				<h4>Single room <span>110$</span></h4>
+				<img src="~/images/4.jpg" class="img-responsive" alt="">
+				<p>Ideal for single person accomodation in an affordable price with fascinating ambiance and an atmosphere unmatched elsewhere.</p>
+				<a class="hvr-shutter-in-horizontal" href="/Customer/details">Book Now</a>
+			</div>
+			<div class="col-md-4 tels-left">
+				<h4>Double room <span>150$</span></h4>
+				<img src="~/images/9.jpg" class="img-responsive" alt="">
+				<p>Intended for couples with a graceful feel and a soothing touch. Highly luxurious rooms with high comfortable and refreshing envorinment.</p>
+				<a class="hvr-shutter-in-horizontal" href="/Customer/details">Book Now</a>
+			</div>
+			<div class="col-md-4 tels-left">
+				<h4>Private room <span>200$</span></h4>
+				<img src="~/images/3.jpg" class="img-responsive" alt="">
+				<p>Special units built for fulfilling the privacy needs of certain customers. Isolated Rooms with minimum outside hinderence and a peaceful atmosphere.</p>
+				<a class="hvr-shutter-in-horizontal" href="/Customer/details">Book Now</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- tels -->
+	<!-- special -->
+	<div class="special">
+		<div class="container">
+			<div class="spe-info">
+				<h3>Special Offer</h3>
+				<p>5+ visits in a year will hold the customer eligible for special discount coupons of upto 40% for the next entire year.</p>
+			</div>
+		</div>
+	</div>
+	<!-- special -->
+	

@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}	
+
+@model Term_Project.Models.ContactInfo
+
+    <!--start-contact-->
+	
+
+        <div class="contact">
+		<div class="container">
+        <div class="contact-top heading">
+				<h3>CONTACT US</h3>
+			</div>
+			@using (Html.BeginForm())
+            {
+                <div class="contact-bottom"/>
+                    @Html.LabelFor(model => model.Name);
+                    @Html.TextBoxFor(model => model.Name, new { value="Name" , onfocus="this.value = '';" , onblur="if (this.value == '') {this.value = 'Name';}"});
+				    <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
+				    <input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" />
+                    <textarea id="ta1" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message..</textarea>
+                    
+                    <div id="slider"></div>
+                    <div id="slide-value"></div>         
+       
+				<div class="submit-btn">
+                    <input type="submit" value="SUBMIT">
+				</div>
+            }
+		<!--end-contact-->
+
+		<!--start-map-->
+			<div class="co-bt">
+				<div id="picDiv">
+					<form action="/Customer/PicSave" method="post" enctype="multipart/form-data">
+                        <label style="color:yellow">Upload image (Optional) :</label> <input type="file" name="image" />
+                        <input type="submit" value="Upload" />
+					</form>
+				</div>
+                
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--end-map-->
